@@ -31,12 +31,18 @@ export default {
             default: []
         }
     },
-    methods: {
-        deleteTodo(index) {
-            this.$emit('deleteTodo', index)
-        },
-        done(index) {
-            this.$emit('doneTodo', index)
+    setup(props, { emit }) {
+        const deleteTodo = (index) => {
+            emit('deleteTodo', index)
+        }
+
+        const done = (index) => {
+            emit('doneTodo', index)
+        }
+
+        return {
+            deleteTodo,
+            done
         }
     }
 }
